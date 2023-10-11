@@ -1,0 +1,23 @@
+<%= render 'books/list',book: @book, user: @user %>
+
+<%= flash[:notice] %>
+<h1>Books</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th>Title</th>
+    <th>Opinion</th>
+  </tr>
+
+  <% @user_new.each do |book| %>
+  <tr>
+    <td><%= image_tag book.user.get_profile_image(100,100) %></td>
+    <td><%= link_to book_path(book.id) do %>
+    <%= book.title %></td>
+    <% end %>
+    <td><%= book.body %></td>
+    <% end %>
+  </tr>
+
+</table>

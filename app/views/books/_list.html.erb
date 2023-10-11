@@ -1,3 +1,19 @@
+<div>
+  <h1>User info</h1>
+<%= image_tag user.get_profile_image(100,100) %>
+<table>
+  <tr>
+    <td>name</td>
+    <td><%= user.name %></td>
+  </tr>
+  <tr>
+    <td>introduction</td>
+    <td><%= user.introduction %> </td>
+  </tr>
+</table>
+<%= link_to "更新",edit_user_path(user) %>
+</div>
+<div>
 <h1>New book</h1>
 <%= form_with model: book do |f| %>
 <p>Title</p>
@@ -8,3 +24,4 @@
 <%= f.submit "Create Book" %>
 
 <% end %>
+</div>
