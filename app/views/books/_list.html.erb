@@ -1,7 +1,7 @@
-<div>
+<div class="col-md-3">
   <h1>User info</h1>
 <%= image_tag user.get_profile_image(100,100) %>
-<table>
+<table class="table">
   <tr>
     <td>name</td>
     <td><%= user.name %></td>
@@ -11,17 +11,29 @@
     <td><%= user.introduction %> </td>
   </tr>
 </table>
-<%= link_to "更新",edit_user_path(user) %>
+<div class="row">
+<%= link_to edit_user_path(user),class: "btn btn-outline-secondary btn-block" do %>
+<i class="fas fa-user-cog"></i>
+<% end %>
 </div>
-<div>
+
+
 <h1>New book</h1>
+<% if book.errors.any? %>
+<%= book.errors.count %>errors
+<% book.errors.full_messages.each do |message| %>
+<li>
+  <%= message %>
+</li>
+<% end %>
+<% end %>
 <%= form_with model: book do |f| %>
 <p>Title</p>
 <%= f.text_field :title %>
 
 <p>Opinion</p>
 <%= f.text_area :body %><br>
-<%= f.submit "Create Book" %>
+<%= f.submit "Create Book",class: "btn btn-success" %>
 
 <% end %>
 </div>

@@ -6,7 +6,9 @@
 </li>
 <% end %>
 <% end %>
-
+ <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto">
 <h1>User info</h1>
 <%= form_with model: @user do |f|%>
 <%= f.label :name %><br>
@@ -15,6 +17,9 @@
 <%= f.file_field :profile_image,accept: 'image/*' %><br>
 <%= f.label :introduction %><br>
 <%= f.text_area :introduction %><br>
-<%= f.submit "Update User" %>
+<%= f.submit "Update User",class: "btn btn-secondary" %>
 
 <% end %>
+</div>
+</div>
+</div>

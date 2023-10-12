@@ -5,52 +5,90 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/6726daaf8d.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <header>
+  <body>
+    <header>
+  <nav class="navber navber-expand-lg navber-dark bg-dark ">
+  <div class="container-fluid">
+
     <% if user_signed_in? %>
-    <li>
-      <%= link_to "Bookers",root_path %>
+    <div class="row d-flex justify-content-end">
+      <%= link_to root_path,class: "navbar-brand" do %>
+      <span class="col-2 offset-2 mr-auto">Bookers</span>
+      <% end %>
+
+
+    <li class="col-md-1 offset-6 p-1" style="list-style:none;">
+      <%= link_to user_path(current_user.id) do %>
+      <i class="fa-solid fa-home"></i>Home
+     <% end %>
+     </li>
+    <li class="col-md-1 p-1" style="list-style:none;">
+      <%= link_to users_path do %>
+      <i class="fa-solid fa-users"></i>Users
+      <% end %>
     </li>
-    <li>
-      <%= link_to "Home",user_path(current_user.id) %>
+    <li class="col-md-1 p-1" style="list-style:none;">
+      <%= link_to books_path do %>
+      <i class="fa-solid fa-book-open"></i>Books
+      <% end %>
     </li>
-    <li>
-      <%= link_to "Users",users_path %>
+    <li class="col-md-1 p-1" style="list-style:none;">
+    <%= link_to destroy_user_session_path,method: :delete do %>
+     <i class="fa-solid fa-sign-out-alt"></i>Log out
+     <% end %>
     </li>
-    <li>
-      <%= link_to "Books",books_path %>
-    </li>
-    <li>
-    <%= link_to "Log out",destroy_user_session_path,method: :delete %>
-    </li>
+
+    </div>
     <% else %>
-    <li>
-      <%= link_to "Bookers",root_path %>
+    <div class="row d-flex justify-content-end">
+      <%= link_to root_path,class: "navbar-brand" do %>
+      <span class="col-2 offset-2 mr-auto">Bookers</span>
+      <% end %>
+    <li class="col-md-1 offset-6 p-1" style="list-style:none;">
+      <%= link_to root_path do %>
+    <i class="fa-solid fa-home"></i>Home
+     <% end %>
+     </li>
+     <li class="col-md-1 p-1" style="list-style:none;">
+      <%= link_to about_path do %>
+      <i class="fa-solid fa-link"></i>About
+      <% end %>
     </li>
-    <li>
-      <%= link_to "Home",root_path %>
+    <li class="col-md-1 p-1" style="list-style:none;">
+      <%= link_to new_user_registration_path do %>
+      <i class="fa-solid fa-book-open"></i>Books
+      <% end %>
     </li>
-    <li>
-      <%= link_to "About",about_path %>
-    </li>
-    <li>
-      <%= link_to "Sign up",new_user_registration_path %>
-    </li>
-    <li>
-      <%= link_to "Log in",new_user_session_path %>
+    <li class="col-md-1 p-1" style="list-style:none;">
+      <%= link_to new_user_session_path do %>
+      <i class="fa-solid fa-sign-out-alt"></i>Log in
+      <% end %>
     </li>
     <% end %>
+    </div>
+    </nav>
   </header>
 
-  <body>
+
     <div class="flash-notifications">
   <% flash.each do |key, value| %>
    <%= content_tag(:div, value, class: key) %>
   <% end %>
 </div>
     <%= yield %>
+    <footer>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto">
+  <p>CopyRight Infratop.inc</p>
+  </div>
+  </div>
+  </div>
+</footer>
+
   </body>
 </html>
